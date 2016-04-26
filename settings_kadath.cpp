@@ -4,6 +4,11 @@
 
 #include "settings_kadath.hpp"
 
+string return_WHITE() {
+
+	return "255, 255, 255";
+}
+
 string return_LIST_HEAD () {
 
 	return "&#9679";

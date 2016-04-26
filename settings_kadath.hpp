@@ -24,6 +24,8 @@ const string ILOC = FLOC + BS + ICON_FLDR;
 
 inline double NaN() { return numeric_limits<double>::quiet_NaN(); }
 
+string return_WHITE();
+
 string return_LIST_HEAD ();
 
 string return_ELEMENT_properties_element_font_color ();

@@ -4,8 +4,9 @@
 // This code is published under the GNU Lesser General Public License.
 
 #include "generate_html.hpp"
-#include "css_html_formatting.cpp"
 #include "utils.hpp"
+
+#include "../DAC/css_html_formatting.cpp"
 
 using namespace std;
 
@@ -138,7 +139,7 @@ void generate_main_table (ofstream& o, const vector <ICON>& I, const vector <siz
 	size_t LINK_COUNTER = 0;
 	const size_t MAX = I.size();
 
-	table_open (o, "center");
+	table_open (o, "0", "2", "center");
 	tag_end(o);
 
 	for (size_t i = 0; i < CELL_GEOM.size(); i++) {
@@ -243,7 +244,7 @@ void generate_index_table_menupoint (ofstream& o, const size_t THIS, const strin
 
 void generate_index_table (ofstream& o) {
 
-	table_open(o, "center");
+	table_open(o, "0", "0", "center");
 	style_open(o);
 	style_text_align(o, "center");
 	style_width(o, "100%");
@@ -260,7 +261,7 @@ void generate_index_table (ofstream& o) {
 	row_close(o);
 	table_close(o);
 
-	table_open(o, "center");
+	table_open(o, "0", "0", "center");
 	style_open(o);
 	style_text_align(o, "center");
 	style_width(o, "100%");
@@ -278,7 +279,7 @@ void generate_index_table (ofstream& o) {
 	row_close(o);
 	table_close(o);
 
-	table_open(o, "center");
+	table_open(o, "0", "0", "center");
 	style_open(o);
 	style_text_align(o, "center");
 	style_width(o, "100%");
@@ -361,7 +362,7 @@ void generate_interviews (ofstream& o) {
 
 	if (P.size() == 0) return;
 
-	table_open(o, "center");
+	table_open(o, "0", "0", "center");
 	style_open(o);
 	style_width(o, "100%");
 	style_close(o);
@@ -378,9 +379,11 @@ void generate_interviews (ofstream& o) {
 	style_close(o);
 	tag_end(o);
 
+	const string C = return_WHITE ();
+
 	for (size_t i = 0; i < P.size(); i++) {
 
-		write (o, P.at(i), "Verdana", "14", "justify", "150%");
+		write (o, P.at(i), "Verdana", "14", "justify", "150%", C);
 	}
 
 	cell_close(o);
@@ -398,7 +401,7 @@ void generate_publications (ofstream& o) {
 
 	if (P.size() == 0) return;
 
-	table_open(o, "center");
+	table_open(o, "0", "0", "center");
 	style_open(o);
 	style_width(o, "100%");
 	style_close(o);
@@ -415,20 +418,11 @@ void generate_publications (ofstream& o) {
 	style_close(o);
 	tag_end(o);
 
-	/*
-
-	 *******        FUNCTION WRITE        ********
-
-		 ~ TEXT ~         -> italic
-		 * TEXT *         -> bold
-		 # TEXT #         -> insert image
-		 { LINK {} TEXT } -> TEXT, pointing to LINK
-
-	*/
+	const string C = return_WHITE ();
 
 	for (size_t i = 0; i < P.size(); i++) {
 
-		write (o, P.at(i), "Verdana", "14", "justify", "150%");
+		write (o, P.at(i), "Verdana", "14", "justify", "150%", C);
 	}
 
 	cell_close(o);
